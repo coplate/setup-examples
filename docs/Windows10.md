@@ -46,7 +46,7 @@
     environment:
       - LOCAL_ADB_HOST=somehost
     extra_hosts:
-      - somehost:192.168.2.15
-    command: stf local --public-ip 192.168.99.100 --provider-min-port 7400 --provider-max-port 7500 --adb-host somehost --adb-port 55037
+      - localpc:<<PUT YOUR PC IP HERE, not 127.0.0.1 >>
+    command: stf local --public-ip <<PUT YOUR PUBLIC IP HERE, I 192.168.99.100 as that is the IP of teh docker image>> --provider-min-port 7400 --provider-max-port 7500 --adb-host localpc --adb-port 55037
   ````
   
