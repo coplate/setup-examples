@@ -10,12 +10,14 @@
 - Install some method of port redirection so you can forward from the docker interface to localhost for adb
   - Windows adb daemon does not properly listen on all ports
   - Alternatively, use the command to run adb in non-daemon mode `adb -a nodaemon server`
+  - I used Bash for windows 10 and run this command
+    - `socat tcp-l:55037,reuseaddr,fork tcp:localhost:5037`
 - ( Optional ) Install [RethinkDB for windows](https://rethinkdb.com/docs/install/windows/)
   - Or use the RethinkDB docker image as mentions in configuration.  The rest of the guide will show using rethink in docker with stf
   
 ### Configuration
-  I use this docker-compose.yml, if you are using RethinkDB for Windows, you can 
-  # in bash for windows 10, forwards 55037 to 5037 for ADB # socat tcp-l:55037,reuseaddr,fork tcp:localhost:5037
+  I use this docker-compose.yml, if you are using RethinkDB for Windows, you can remove that section, and set the rethink DB port local variable
+  
   ````
 rethinkdb:
   image: rethinkdb:2.3
