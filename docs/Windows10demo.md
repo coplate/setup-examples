@@ -111,6 +111,6 @@ or
       - LOCAL_ADB_HOST=localpc
     extra_hosts:
       - localpc:<<PUT YOUR PC IP HERE, not 127.0.0.1 >>
-    command: stf local --public-ip <<PUT YOUR PUBLIC IP HERE, I 192.168.99.100 as that is the IP of teh docker image>> --provider-min-port 7400 --provider-max-port 7500 --adb-host localpc --adb-port 55037
+    command: stf local --public-ip <<PUT YOUR PUBLIC IP HERE, I used 192.168.99.100 as that is the IP docker told me it had when I launched it>> --provider-min-port 7400 --provider-max-port 7500 --adb-host localpc --adb-port 55037
   ````
   
