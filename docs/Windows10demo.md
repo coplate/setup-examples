@@ -2,17 +2,19 @@
 ## Background 
 
 I had to set this up on a windows 10 laptop, becasue that was all I had to demo to my management, here are the two ways I set it up.
-I did it in bash downloading all the dependencies first, becasue I didn't understnad dockers networking the first time.  Then I took more time to learn that, and ran it in docker.
+I did it in bash downloading all the dependencies first, becasue I didn't understand dockers networking the first time.  Then I took more time to learn that, and ran it in docker.
 
 
 ## Windows 10 Home Version - using Bash for Windows 10
 
 ### Setup
+0. Install Android tools ( studio or command line ) I already did this in windows GUI, not in bash.
+
 - I followed this guide but did it on windows.   I have recreated the guide in case it is removed from gist: https://gist.github.com/yasuyk/bbaa28568c497d95ff92566efc4ecc3c
   - Windows apt installed node 4.2.6, so I needed to use the `ALLOW_OUTDATED_DEPENDENCIES=1` to run STF for quick test
 
-0. Install Android tools ( studio or command line )
-1. Add Add RethinkDB key
+
+1. Add RethinkDB key
 
         source /etc/lsb-release && echo "deb http://download.rethinkdb.com/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
         wget -qO- https://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
