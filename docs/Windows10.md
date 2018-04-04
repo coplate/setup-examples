@@ -20,31 +20,33 @@
   
   ````yaml
   
-rethinkdb:
-  image: rethinkdb:2.3
-  ports:
-    - "8080:8080"
-    - "28015:28015"
-    - "29015:29015"
-  restart: always
-  volumes:
-    - "/srv/rethinkdb:/data"
-  command: "rethinkdb --bind all --cache-size 2048"
-
-stf-local:
-  image: openstf/stf
-  links:
-    - rethinkdb
-  ports:
-    - "7100:7100"
-    - "7110:7110"
-    - "7120:7120"
-    - "7400-7500:7400-7500"
-  restart: always
-  environment:
-    - LOCAL_ADB_HOST=somehost
-  extra_hosts:
-    - somehost:<<Put your PC IP ADDRESS HERE>>
-  command: stf local --public-ip 192.168.99.100 --provider-min-port 7400 --provider-max-port 7500 --adb-host somehost --adb-port 55037
+  rethinkdb:
+    image: rethinkdb:2.3
+    ports:
+      - "8080:8080"
+      - "28015:28015"
+      - "29015:29015"
+    restart: always
+    volumes:
+      - "/srv/rethinkdb:/data"
+    command: "rethinkdb --bind all --cache-size 2048"
+  
+  
+  
+  stf-local:
+    image: openstf/stf
+    links:
+      - rethinkdb
+    ports:
+      - "7100:7100"
+      - "7110:7110"
+      - "7120:7120"
+      - "7400-7500:7400-7500"
+    restart: always
+    environment:
+      - LOCAL_ADB_HOST=somehost
+    extra_hosts:
+      - somehost:192.168.2.15
+    command: stf local --public-ip 192.168.99.100 --provider-min-port 7400 --provider-max-port 7500 --adb-host somehost --adb-port 55037
   ````
   
