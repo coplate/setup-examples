@@ -4,7 +4,7 @@
 
 ### Setup
 - Install [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/)
-  - On Windows 10 home, docker toolbox ins needed. See or create a new section for windows 10 professional
+  - On Windows 10 home, docker toolbox is needed. See or create a new section for windows 10 professional
 - Install [Android Studio](https://developer.android.com/studio/index.html) Or the stanadalone android command line tools for adbd if that is all you need
   - I could not identify a way to pass through windows USB devices into docker, so I found it easy to do a quick test using adbd on Windows.
 - Install some method of port redirection so you can forward from the docker interface to localhost for adb
