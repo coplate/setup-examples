@@ -2,7 +2,7 @@
 
 ## Windows 10 Home Version - using Docker
 
-### Add usb filters
+### Setup
 - Install [Docker Toolbox](https://docs.docker.com/toolbox/toolbox_install_windows/)
   - On Windows 10 home, docker toolbox ins needed. See or create a new section for windows 10 professional
 - Install [Android Studio](https://developer.android.com/studio/index.html) Or the stanadalone android command line tools for adbd if that is all you need
@@ -50,3 +50,60 @@
     command: stf local --public-ip <<PUT YOUR PUBLIC IP HERE, I 192.168.99.100 as that is the IP of teh docker image>> --provider-min-port 7400 --provider-max-port 7500 --adb-host localpc --adb-port 55037
   ````
   
+## Windows 10 Home Version - using Bash for Windows 10
+
+### Setup
+- I followd whis guide but did it on windows.   I have recreated the guide in case it is removed from gist: https://gist.github.com/yasuyk/bbaa28568c497d95ff92566efc4ecc3c
+  - Windows apth installed node 4.2.6, so I needed to use the `ALLOW_OUTDATED_DEPENDENCIES=1` to run STF for quick test
+
+# How to install OpenSTF in Bash for windows 10
+
+1. Add Add RethinkDB key
+
+        source /etc/lsb-release && echo "deb http://download.rethinkdb.com/apt $DISTRIB_CODENAME main" | sudo tee /etc/apt/sources.list.d/rethinkdb.list
+        wget -qO- https://download.rethinkdb.com/apt/pubkey.gpg | sudo apt-key add -
+
+2. Install packages
+
+        sudo apt-get update && sudo apt-get install -y git nodejs nodejs-legacy npm rethinkdb android-tools-adb python autoconf automake libtool build-essential ninja-build libzmq3-dev libprotobuf-dev git graphicsmagick yasm stow
+
+3. Install additional packages via npm
+
+        sudo npm install -g bower karma gulp
+
+4. Install ZeroMQ
+
+        cd ~/Downloads && wget http://download.zeromq.org/zeromq-4.1.2.tar.gz && tar -zxvf zeromq-4.1.2.tar.gz && cd zeromq-4.1.2 && ./configure --without-libsodium --prefix=/usr/local/stow/zeromq-4.1.2
+        make && sudo make install && cd /usr/local/stow && sudo stow -vv zeromq-4.1.2
+
+5. Install Google protobuf
+
+        cd ~/Downloads && git clone https://github.com/google/protobuf.git && cd protobuf && ./autogen.sh && ./configure --prefix=/usr/local/stow/protobuf-`git rev-parse --short HEAD`
+        make && sudo make install && cd /usr/local/stow && sudo stow -vv protobuf-*
+
+6. Update library path
+
+        sudo ldconfig
+
+7. Install stf
+
+        sudo npm install -g stf
+
+# Run OpenSTF
+
+1. Start required services
+
+        rethinkdb &
+        adb start-server
+
+2. Start OpenSTF
+
+        ALLOW_OUTDATED_DEPENDENCIES=1 stf local
+
+or 
+ 
+        ALLOW_OUTDATED_DEPENDENCIES=1 stf local --public-ip <ip address>
+
+3. View in actions
+
+    Go to htttp://<your_ip_address>:7100
