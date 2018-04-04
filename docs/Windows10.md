@@ -18,7 +18,8 @@
 ### Configuration
   I use this docker-compose.yml, if you are using RethinkDB for Windows, you can remove that section, and set the rethink DB port local variable
   
-  ````
+  ````yaml
+  
 rethinkdb:
   image: rethinkdb:2.3
   ports:
