@@ -1,4 +1,7 @@
 # Quick testing on windows 10
+## Background 
+
+I had to set thi up on a windows 10 laptop, becasue that was all I had to demo to my management, here are the two ways I set it up.
 
 ## Windows 10 Home Version - using Docker
 
@@ -88,7 +91,7 @@
 
         sudo npm install -g stf
 
-# Run OpenSTF
+## Run OpenSTF
 
 1. Start required services
 
